@@ -12,8 +12,7 @@ public class TestUsernameLogic
 {
 	
 	UserBusinessLogic userLogic = new UserBusinessLogic();
-	User user1 = new User("Zachary", "Hayes");
-	User user2 = new User("Abraham", "Van Helsing");
+	User user = new User("Zachary", "Hayes");
 	
 	@Before
 	public void setUp() throws Exception
@@ -23,8 +22,30 @@ public class TestUsernameLogic
 	@Test
 	public void testGenerateUsername()
 	{
-		userLogic.generateUsername(user1);
-		assertEquals("zhayes", user1.getUsername());
+		userLogic.generateUsername(user);
+		assertEquals("zhayes", user.getUsername());
+	}
+	
+	@Test
+	public void testUsernameAllLowercase()
+	{
+		userLogic.generateUsername(user);
+		assertTrue(usernameIsLowercase(user.getUsername()));
+	}
+	
+	// Returns true if all characters in username are lowercase.
+	private boolean usernameIsLowercase(String username)
+	{
+		char[] charArray = username.toCharArray();
+        
+        for(int i=0; i < charArray.length; i++){
+            
+            //if any character is not in lower case, return false
+            if( !Character.isLowerCase( charArray[i] ))
+                return false;
+        }
+        
+        return true;
 	}
 
 }

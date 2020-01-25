@@ -20,10 +20,10 @@ public class TestEmailLogic
 	}
 
 	@Test
-	public void testGenerateUsername()
+	public void testGenerateEmail()
 	{
-		userLogic.generateUsername(user);
-		assertEquals("zhayes@dmacc.edu", user.getUsername());
+		userLogic.generateEmail(user);
+		assertEquals("zhayes@dmacc.edu", user.getEmail());
 	}
 
 }
